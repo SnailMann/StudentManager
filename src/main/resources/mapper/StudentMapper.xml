@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.snailmann.mapper.StudentMapper" >
+    
+    <select id="findStudentById" parameterType="java.lang.Integer" resultType="com.snailmann.po.StudentCustom">
+        select student.* from student where id = #{id}
+    </select>
+    
+    <update id="updateStudentById" parameterType="com.snailmann.po.StudentCustom" >
+       update student 
+       set name=#{name},age=#{age},sex=#{sex},grade=#{grade},score=#{score}
+       where id = #{id}
+    </update>
+    
+     
+</mapper>

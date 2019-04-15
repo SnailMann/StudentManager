@@ -1,0 +1,54 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
+
+	<!-- *********可以扫描controller、servicem,这里就指定controller*************-->
+    <context:component-scan base-package="com.snailmann.controller"/>
+	
+		
+	<!--**************************注解映射适配器驱动*************************** -->
+    <mvc:annotation-driven/>
+	
+
+	<!-- ****视图解析器解析jsp解析，默认使用jstl标签，classpath下的得有jstl的包*****-->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		 <!-- 配置jsp路径的前缀 -->
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+		<!-- //配置jsp路径的后缀 -->
+		<property name="suffix" value=".jsp"/> 
+	</bean>
+	
+	<!-- 拦截器 -->  
+	<mvc:interceptors>  
+    <!-- 多个拦截器，顺序执行 -->  
+    <!-- 登录认证拦截器 -->  
+    	<mvc:interceptor>  
+        	<mvc:mapping path="/**"/>  
+        	<bean class="com.snailmann.interceptor.LoginInterceptor"/>
+    	</mvc:interceptor> 
+    	
+    	<mvc:interceptor>  
+        	<mvc:mapping path="/Student/*.action"/>  
+        	<bean class="com.snailmann.interceptor.RightOfStudentInterceptor"/>
+    	</mvc:interceptor> 
+    	
+    	<mvc:interceptor>  
+        	<mvc:mapping path="/StudentCustom/*.action"/>  
+        	<bean class="com.snailmann.interceptor.RightOfTeacherInterceptor"/>
+    	</mvc:interceptor> 
+	</mvc:interceptors>  
+	
+	
+</beans>

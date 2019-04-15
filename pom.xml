@@ -1,12 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.springframework</groupId>
-    <artifactId>Studentmaven</artifactId>
-    <packaging>war</packaging>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>Studentmaven Maven Webapp</name>
-    <url>http://maven.apache.org</url>
+    <groupId>com.snailmann</groupId>
+    <artifactId>student-manager</artifactId>
+    <version>1.0.0</version>
 
     <properties>
         <spring.version>4.3.19.RELEASE</spring.version>
@@ -200,6 +199,11 @@
             <artifactId>jsp-api</artifactId>
             <version>2.2</version>
         </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
         <!-- Servlet & JSP API end -->
 
         <!-- log4j start -->
@@ -228,3 +232,4 @@
         </plugins>
     </build>
 </project>
+
